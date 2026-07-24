@@ -2,16 +2,31 @@ const tg = window.Telegram.WebApp;
 
 tg.expand();
 
-document
-.getElementById("watchAd")
-.onclick = () => {
+const AdController = window.Adsgram.init({
+    blockId: "39404",
+    debug: true
+});
 
-document.getElementById("status").innerHTML =
-"جاري تحميل الإعلان...";
+document.getElementById("watchAd").addEventListener("click", async () => {
 
-/*
-هنا سنضيف كود AdsGram الرسمي
-بعد ربط الـ SDK أو API.
-*/
+    document.getElementById("status").innerText = "جاري تحميل الإعلان...";
 
-};
+    try {
+
+        const result = await AdController.show();
+
+        document.getElementById("status").innerText =
+            "✅ انتهى الإعلان";
+
+        console.log(result);
+
+    } catch (e) {
+
+        document.getElementById("status").innerText =
+            "❌ لم يتم عرض الإعلان";
+
+        console.log(e);
+
+    }
+
+});
