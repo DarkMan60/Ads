@@ -3,7 +3,7 @@ const tg = window.Telegram.WebApp;
 tg.expand();
 
 const AdController = window.Adsgram.init({
-    blockId: "39404",
+    blockId: "",
     debug: true
 });
 
